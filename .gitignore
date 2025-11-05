@@ -1,0 +1,98 @@
+# ======================================================
+# === ROS1 (Catkin) Build Artifacts ===
+# ======================================================
+build/
+devel/
+install/
+log/
+logs/
+.catkin_tools/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# ======================================================
+# === ROS Generated Files ===
+# ======================================================
+msg_gen/
+srv_gen/
+msg/*_msg*
+srv/*_srv*
+rosdoc_lite/
+*.manifest.xml
+
+# ======================================================
+# === Gazebo / Simulation Artifacts ===
+# ======================================================
+.gazebo/
+.ignition/
+*.world
+*.model
+*.sdf
+*.stl
+*.dae
+*.urdf.xacro
+*.log
+*.bag
+*.bag.active
+*.test
+*.csv
+
+# ======================================================
+# === IDE / Editor Files ===
+# ======================================================
+.vscode/
+.idea/
+*.code-workspace
+*.user
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ======================================================
+# === Docker / Devcontainer ===
+# ======================================================
+.devcontainer/
+.docker/
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# ======================================================
+# === Python Build Cache ===
+# ======================================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+
+# ======================================================
+# === Temporary / Backup Files ===
+# ======================================================
+*.tmp
+*.bak
+*.old
+*.orig
+*.backup
+*.log.old
+
+# ======================================================
+# === Local Workspace Cache (avoid nested builds) ===
+# ======================================================
+src/*/build/
+src/*/devel/
+src/*/install/
+src/*/log/
+
+# ======================================================
+# === Misc / Custom ===
+# ======================================================
+.bazel-build/
+.cache/
+output/
