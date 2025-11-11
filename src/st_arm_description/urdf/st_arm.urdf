@@ -38,8 +38,8 @@
     -->
   </link>
   
-  <!--
-  <joint name='world_joint' type='fixed'>
+  
+  <!-- <joint name='world_joint' type='fixed'>
     <child>base_link</child>
     <parent>world</parent>
     <axis>
@@ -54,9 +54,11 @@
       </dynamics>
       <use_parent_model_frame>1</use_parent_model_frame>
     </axis>      
-  </joint>
-  -->
+  </joint> -->
+ 
   <!---->
+
+
   <link name="shoulder_yaw_link">
     <inertial>
       <origin xyz="7.62380313221452E-05 -0.00199452460559476 0.0999832145397144" rpy="0 0 0" />

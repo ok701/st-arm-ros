@@ -10,6 +10,7 @@
     name="spawn_model"
     pkg="gazebo_ros"
     type="spawn_model"
+
     args="-file $(find st_arm_description)/urdf/st_arm.urdf -urdf -model st_arm"
     output="screen" />
   <node
@@ -17,4 +18,6 @@
     pkg="rostopic"
     type="rostopic"
     args="pub /calibrated std_msgs/Bool true" />
+
+
 </launch>
