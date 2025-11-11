@@ -1,0 +1,7 @@
+<launch>
+      <include file="$(find gazebo_ros)/launch/empty_world.launch">
+            <arg name="gui" default="true" />
+            <arg name="paused" default="true" />
+            <arg name="world_name" value="$(find field_pkgs)/worlds/field.world" />
+      </include>
+</launch>

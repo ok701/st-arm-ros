@@ -1,8 +1,6 @@
 #ifndef DYNAMICS_H
 #define DYNAMICS_H
 
-#include "motor_controller.h"
-
 
 #include <eigen3/Eigen/Dense>
 

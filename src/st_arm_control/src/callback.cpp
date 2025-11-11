@@ -1,6 +1,6 @@
 #include "callback.h"
 
-extern rmd_motor _DEV_MC[6];
+// extern rmd_motor _DEV_MC[6];
 extern Dynamics::JMDynamics jm_dynamics;
 
 
@@ -55,8 +55,9 @@ void Callback::SwitchGainR(const std_msgs::Float32MultiArrayConstPtr &msg)
 
 void Callback::InitializePose(const std_msgs::BoolConstPtr &msg)
 {
-  if(msg->data) for(uint8_t i=0; i<6; i++) _DEV_MC[i].initialize_position = true;
-  std::cout << "Initialized Pose" << std::endl;
+  // if(msg->data) for(uint8_t i=0; i<6; i++) _DEV_MC[i].initialize_position = true;
+  // std::cout << "Initialized Pose" << std::endl;
+  ROS_WARN("InitializePose called (hardware disabled in sim build)");
 }
 
 void Callback::GripperCallback(const std_msgs::Float32ConstPtr &msg)

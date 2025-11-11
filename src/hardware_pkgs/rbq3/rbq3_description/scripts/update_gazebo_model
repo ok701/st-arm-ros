@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo ""
+echo "This script copy the 'rbq3_description/urdf/rbq3.sdf' to  "
+echo "                    '~/.gazebo/models/rbq3_description/model.sdf'     "
+echo ""
+echo "This script copy the 'rbq3_description/config/rbq3.config' to "
+echo "                      '~/.gazebo/models/rbq3_description/model.config'    "
+echo ""
+echo "This script copy the 'rbq3_description/meshes' to "
+echo "    '~/.gazebo/models/rbq3_description/meshes'    "
+echo ""
+echo "to facilitate bringing up the 'rbq3' gazebo model."
+echo ""
+
+mkdir -p ~/.gazebo/models/rbq3_description/
+
+cp `rospack find rbq3_description`/urdf/rbq3.sdf ~/.gazebo/models/rbq3_description/model.sdf
+
+cp `rospack find rbq3_description`/config/rbq3.config ~/.gazebo/models/rbq3_description/model.config
+
+cp -r `rospack find rbq3_description`/meshes/ ~/.gazebo/models/rbq3_description/meshes/
+
+echo ""
+echo "Ready!"
+echo ""

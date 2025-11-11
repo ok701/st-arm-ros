@@ -1,6 +1,6 @@
     #include "dynamics.h"
 
-extern Motor_Controller motor_ctrl;
+// extern Motor_Controller motor_ctrl;
 
 namespace Dynamics
 {
@@ -12,11 +12,11 @@ namespace Dynamics
 
     void JMDynamics::Loop()
     {
-        SetTheta(motor_ctrl.GetJointTheta()); //theta 발생
-        SetThetaDotSMAF(motor_ctrl.GetThetaDotSMAF()); //theta dot 발생
+        // SetTheta(motor_ctrl.GetJointTheta()); //theta 발생
+        // SetThetaDotSMAF(motor_ctrl.GetThetaDotSMAF()); //theta dot 발생
         SetRBDLVariables(); //RBDL 설정
         PostureGeneration(); 
-        motor_ctrl.SetTorque(GetTorque());
+        // motor_ctrl.SetTorque(GetTorque());
     }
 
 
