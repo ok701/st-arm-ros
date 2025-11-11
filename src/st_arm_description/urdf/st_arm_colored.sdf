@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdf version='1.7'>
+  <model name='st_arm'>
+
+<!-- rotating base joint -->
+    <joint name='rbq3_base_joint' type='universal'>
+      <child>rbq3_base_link</child>
+      <parent>world</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>0</friction>
+          <damping>0</damping>
+        </dynamics>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis> 
+      <axis2>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis2>
+    </joint>
+    
+    <link name='rbq3_base_link'>
+      <pose frame=''>0 0 -0.5 0 0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>10.0</mass>
+        <inertia>
+          <ixx>4.17708333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.17708333</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333333</izz>
+        </inertia>
+      </inertial>
+      <self_collide>1</self_collide>
+      <collision name='rbq3_base_link_collision'>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.25 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='rbq3_base_link_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.25 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>20 20 20 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+          <emissive>0 0 0 1</emissive>
+          <specular>0 0 0 0</specular>
+        </material>
+      </visual>
+      <sensor name='rbq3_base_imu' type='imu'>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <imu>
+          <angular_velocity>
+            <x> <noise type='none'></noise> </x>
+            <y> <noise type='none'></noise> </y>
+            <z> <noise type='none'></noise> </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x> <noise type='none'></noise> </x>
+            <y> <noise type='none'></noise> </y>
+            <z> <noise type='none'></noise> </z>
+          </linear_acceleration>
+        </imu>
+        <always_on>1</always_on>
+        <update_rate>1000</update_rate>
+      </sensor>
+    </link>
+
+    <joint name='manipulator_base_joint' type='fixed'>
+      <child>manipulator_base_link</child>
+      <parent>rbq3_base_link</parent>
+      <axis>
+        <xyz>0 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+
+    <link name='manipulator_base_link'>
+      <inertial>
+        <pose>0 0.000334 0.031072 0 -0 0</pose>
+        <mass>0.594687</mass>
+        <inertia>
+          <ixx>0.000331218</ixx>
+          <ixy>-4.35299e-13</ixy>
+          <ixz>1.53068e-12</ixz>
+          <iyy>0.000348337</iyy>
+          <iyz>2.26266e-06</iyz>
+          <izz>0.000569437</izz>
+        </inertia>
+      </inertial>
+      <visual name='manipulator_base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/base_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.0 0.0 0.0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='shoulder_yaw_joint' type='revolute'>
+      <pose relative_to='manipulator_base_link'>0 0 0 0 -0 0</pose>
+      <parent>manipulator_base_link</parent>
+      <child>shoulder_yaw_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-3.14</lower>
+          <upper>3.14</upper>
+          <effort>1</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='shoulder_yaw_link'>
+      <pose relative_to='shoulder_yaw_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>7.6e-05 -0.001995 0.099983 0 -0 0</pose>
+        <mass>0.552307</mass>
+        <inertia>
+          <ixx>0.000249126</ixx>
+          <ixy>8.298e-07</ixy>
+          <ixz>4.85171e-07</ixz>
+          <iyy>0.000406785</iyy>
+          <iyz>2.59356e-07</iyz>
+          <izz>0.000263429</izz>
+        </inertia>
+      </inertial>
+      <visual name='shoulder_yaw_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/shoulder_yaw_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.5 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='shoulder_pitch_joint' type='revolute'>
+      <pose relative_to='shoulder_yaw_link'>0 0 0.1019 0 -0 0</pose>
+      <parent>shoulder_yaw_link</parent>
+      <child>shoulder_pitch_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-3.9</lower>
+          <upper>0.76</upper>
+          <effort>1</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='shoulder_pitch_link'>
+      <pose relative_to='shoulder_pitch_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.222042 0.045737 -0 0 -0 0</pose>
+        <mass>0.653268</mass>
+        <inertia>
+          <ixx>0.000286326</ixx>
+          <ixy>-1.49184e-07</ixy>
+          <ixz>-1.16084e-10</ixz>
+          <iyy>0.000648405</iyy>
+          <iyz>-1.03192e-10</iyz>
+          <izz>0.000486228</izz>
+        </inertia>
+      </inertial>
+      <visual name='shoulder_pitch_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/shoulder_pitch_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.5 0.1 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='elbow_pitch_joint' type='revolute'>
+      <pose relative_to='shoulder_pitch_link'>0.25 0 0 0 -0 0</pose>
+      <parent>shoulder_pitch_link</parent>
+      <child>elbow_pitch_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-2.9</lower>
+          <upper>2.9</upper>
+          <effort>1</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='elbow_pitch_link'>
+      <pose relative_to='elbow_pitch_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.170445 0.001209 4.8e-05 0 -0 0</pose>
+        <mass>0.170292</mass>
+        <inertia>
+          <ixx>3.02042e-05</ixx>
+          <ixy>-6.35247e-08</ixy>
+          <ixz>-2.34242e-10</ixz>
+          <iyy>0.000198778</iyy>
+          <iyz>-1.0909e-10</iyz>
+          <izz>0.000200818</izz>
+        </inertia>
+      </inertial>
+      <visual name='elbow_pitch_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/elbow_pitch_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.5 0.75 0.5 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='wrist_pitch_joint' type='revolute'>
+      <pose relative_to='elbow_pitch_link'>0.25 0 0 0 -0 0</pose>
+      <parent>elbow_pitch_link</parent>
+      <child>wrist_pitch_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>1</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wrist_pitch_link'>
+      <pose relative_to='wrist_pitch_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.042786 -0 0.01133 0 -0 0</pose>
+        <mass>0.0923461</mass>
+        <inertia>
+          <ixx>2.36446e-05</ixx>
+          <ixy>2.03859e-14</ixy>
+          <ixz>-3.88711e-07</ixz>
+          <iyy>2.44308e-05</iyy>
+          <iyz>1.60956e-14</iyz>
+          <izz>1.6139e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='wrist_pitch_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/wrist_pitch_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.6 0.3 0.0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='wrist_roll_joint' type='revolute'>
+      <pose relative_to='wrist_pitch_link'>0 0 0 0 -0 0</pose>
+      <parent>wrist_pitch_link</parent>
+      <child>wrist_roll_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1.57</lower>
+          <upper>1.57</upper>
+          <effort>1</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wrist_roll_link'>
+      <pose relative_to='wrist_roll_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.091375 0 0.000362 0 -0 0</pose>
+        <mass>0.0869629</mass>
+        <inertia>
+          <ixx>1.41812e-05</ixx>
+          <ixy>-9.57639e-15</ixy>
+          <ixz>2.92507e-09</ixz>
+          <iyy>2.29933e-05</iyy>
+          <iyz>1.70366e-16</iyz>
+          <izz>1.9671e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='wrist_roll_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/wrist_roll_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.7 0.2 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='wrist_yaw_joint' type='revolute'>
+      <pose relative_to='wrist_roll_link'>0.1045 0 0 0 -0 0</pose>
+      <parent>wrist_roll_link</parent>
+      <child>wrist_yaw_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-2</lower>
+          <upper>2</upper>
+          <effort>1</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='wrist_yaw_link'>
+      <pose relative_to='wrist_yaw_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.052108 0.000348 0.022185 0 -0 0</pose>
+        <mass>0.148763</mass>
+        <inertia>
+          <ixx>6.90068e-05</ixx>
+          <ixy>2.51082e-07</ixy>
+          <ixz>4.81485e-07</ixz>
+          <iyy>3.3479e-05</iyy>
+          <iyz>-1.73104e-09</iyz>
+          <izz>5.62471e-05</izz>
+        </inertia>
+      </inertial>
+      <visual name='wrist_yaw_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/wrist_yaw_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='gripper_left_joint' type='prismatic'>
+      <pose relative_to='wrist_yaw_link'>0.083595 0 0 0 -0 0</pose>
+      <parent>wrist_yaw_link</parent>
+      <child>gripper_left_link</child>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-0.03</lower>
+          <upper>0</upper>
+          <effort>1</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='gripper_left_link'>
+      <pose relative_to='gripper_left_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>1e-16</ixx>
+          <ixy>1e-16</ixy>
+          <ixz>1e-16</ixz>
+          <iyy>1e-16</iyy>
+          <iyz>1e-16</iyz>
+          <izz>1e-16</izz>
+        </inertia>
+      </inertial>
+      <collision name='gripper_left_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/gripper_left_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='gripper_left_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/gripper_left_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='gripper_right_joint' type='prismatic'>
+      <pose relative_to='wrist_yaw_link'>0.083595 0 0 0 -0 0</pose>
+      <parent>wrist_yaw_link</parent>
+      <child>gripper_right_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.03</lower>
+          <upper>0</upper>
+          <effort>1</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.1</damping>
+          <friction>0.1</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='gripper_right_link'>
+      <pose relative_to='gripper_right_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0001</mass>
+        <inertia>
+          <ixx>1e-16</ixx>
+          <ixy>1e-16</ixy>
+          <ixz>1e-16</ixz>
+          <iyy>1e-16</iyy>
+          <iyz>1e-16</iyz>
+          <izz>1e-16</izz>
+        </inertia>
+      </inertial>
+      <collision name='gripper_right_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/gripper_right_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='gripper_right_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://st_arm_description/meshes/stl/gripper_right_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>1 0 0 1</ambient>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

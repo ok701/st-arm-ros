@@ -1,0 +1,26 @@
+{
+  "name": "st_arm_ros",
+  "image": "osrf/ros:noetic-desktop-full",
+
+  "workspaceFolder": "/ws",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/ws,type=bind",
+
+  "runArgs": [
+    "--env=DISPLAY=host.docker.internal:0",
+    "--env=GAZEBO_MODEL_PATH=/ws/src/st_arm_description"
+  ],
+
+  "init": true,
+  "overrideCommand": true,
+  "updateRemoteUserUID": true,
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-iot.vscode-ros",
+        "ms-python.python",
+        "ms-vscode.cpptools"
+      ]
+    }
+  }
+}
