@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo ""
+echo "This script copy the 'st_arm_description/urdf/st_arm.sdf' to  "
+echo "                    '~/.gazebo/models/st_arm_description/model.sdf'     "
+echo ""
+echo "This script copy the 'st_arm_description/config/st_arm.config' to "
+echo "                      '~/.gazebo/models/st_arm_description/model.config'    "
+echo ""
+echo "This script copy the 'st_arm_description/meshes' to "
+echo "    '~/.gazebo/models/st_arm_description/meshes'    "
+echo ""
+echo "to facilitate bringing up the 'st_arm' gazebo model."
+echo ""
+
+mkdir -p ~/.gazebo/models/st_arm_description/
+
+cp `rospack find st_arm_description`/urdf/st_arm.sdf ~/.gazebo/models/st_arm_description/model.sdf
+
+cp `rospack find st_arm_description`/config/st_arm.config ~/.gazebo/models/st_arm_description/model.config
+
+cp -r `rospack find st_arm_description`/meshes/ ~/.gazebo/models/st_arm_description/meshes/
+
+echo ""
+echo "Ready!"
+echo ""

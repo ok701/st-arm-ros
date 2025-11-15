@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="st_arm_gazebo">
+    <physics name="default_physics" default="0" type="ode">
+      <max_step_size>0.001</max_step_size> <!-- 가지보 주기 -->
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <ode>
+	<solver>
+	  <type>quick</type>
+	  <iters>100</iters>
+	  <sor>1.0</sor>
+	  <use_dynamic_moi_rescaling>false</use_dynamic_moi_rescaling>
+	</solver>
+      </ode>
+    </physics>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <uri>model://st_arm_description</uri>
+	    <pose frame="">0 0 0.05 0 0 0</pose> <!-- 0.5=공중 -->
+      <plugin name="plugin" filename="libst_arm_plugin.so"/>
+    </include>
+  </world>
+</sdf>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>st_arm_gazebo</name>
+  <version>1.0.0</version>
+  <description>
+    Gazebo configurations package for ST-Arm
+  </description>
+  <license>Apache 2.0</license>
+  <author email="palwanishan@gmail.com">Palwan Ishan</author>
+  <author email="realfrd@gmail.com">Jin Woo</author>
+  <maintainer email="palwanishan@gmail.com">Palwan Ishan</maintainer>
+  <url type="website">TODO</url>
+  <url type="emanual">TODO</url>
+  <url type="repository">TODO</url>
+  <url type="bugtracker">TODO</url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_ros_control</depend>
+  <depend>controller_manager</depend>
+  <depend>xacro</depend>
+  <depend>urdf</depend>
+  <export>
+    <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/models"/>
+  </export>
+</package>

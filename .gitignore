@@ -1,0 +1,31 @@
+# Build directories
+build/
+devel/
+logs/
+
+# Catkin-specific
+.catkin_tools/
+*.pyc
+*.swp
+
+# Temporary files
+temp/
+*.backup
+*.tmp
+
+# Generated model files
+*.sdf~
+*.urdf~
+
+# VSCode / local environment
+.vscode/
+.devcontainer/
+
+# ROS/Gazebo generated
+*.so
+*.os
+*.o
+
+# System files
+.DS_Store
+Thumbs.db
