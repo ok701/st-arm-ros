@@ -1,48 +1,31 @@
-# === Catkin build artifacts ===
+# Build directories
 build/
 devel/
-install/
-log/
 logs/
+
+# Catkin-specific
 .catkin_tools/
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-compile_commands.json
-
-# === Generated message/service files ===
-msg_gen/
-srv_gen/
-rosdoc_lite/
-
-# === Python cache ===
-__pycache__/
 *.pyc
-*.pyo
-*.pyd
-*.egg-info/
-.eggs/
+*.swp
 
-# === IDE / editor ===
+# Temporary files
+temp/
+*.backup
+*.tmp
+
+# Generated model files
+*.sdf~
+*.urdf~
+
+# VSCode / local environment
 .vscode/
-.idea/
-*.code-workspace
-*.user
-*~
+.devcontainer/
+
+# ROS/Gazebo generated
+*.so
+*.os
+*.o
+
+# System files
 .DS_Store
 Thumbs.db
-
-# === Temp / backup ===
-*.tmp
-*.bak
-*.old
-*.orig
-*.backup
-*.log.old
-
-# === Local workspace caches ===
-src/*/build/
-src/*/devel/
-src/*/install/
-src/*/log/

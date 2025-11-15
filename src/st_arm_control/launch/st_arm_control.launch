@@ -1,3 +1,0 @@
-<launch>
-  <node name="st_arm_control" pkg="st_arm_control" type="st_arm_control" output="screen"/>
-</launch>
