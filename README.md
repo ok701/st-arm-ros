@@ -1,8 +1,6 @@
 # ST Arm Control Simulation
 <img src="assets/st_arm.png" width="800">
 
-</br>
-
 ## Realized Hardware System
 
 **Video Link:** https://www.youtube.com/watch?v=FMRgZ9l8Ioc
