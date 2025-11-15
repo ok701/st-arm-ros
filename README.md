@@ -1,4 +1,4 @@
-# ST Arm Control Simulation
+# Manipulator Control Simulation
 <img src="assets/st_arm.png" width="800">
 
 ## Realized Hardware System
