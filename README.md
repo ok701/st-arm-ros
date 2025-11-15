@@ -1,13 +1,13 @@
 # ST Arm Control Simulation
-
-## Overview
-This project provides a simplified ROS + Gazebo simulation of the ST Arm, based on the original mobile manipulator research project.
-
-### Realized Hardware System
-
 <img src="assets/st_arm.png" width="800">
 
+</br>
+
+## Realized Hardware System
+
 **Video Link:** https://www.youtube.com/watch?v=FMRgZ9l8Ioc
+
+This project provides a simplified ROS + Gazebo simulation of the ST Arm, based on the original mobile manipulator research project.
 
 The real ST Arm is a lightweight mobile manipulator designed for telepresence with VR control. Key features include:
 - Six degrees of freedom  
