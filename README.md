@@ -3,7 +3,7 @@
 
 ## Realized Hardware System
 
-[🎥 **Watch on YouTube**](https://www.youtube.com/watch?v=FMRgZ9l8Ioc)
+🎥 [**Watch on YouTube**](https://www.youtube.com/watch?v=FMRgZ9l8Ioc)
 
 This project provides a simplified ROS + Gazebo simulation of the ST Arm, based on the original mobile manipulator research project.
 
